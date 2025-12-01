@@ -1,1 +1,13 @@
 
+
+
+
+/* Either I use .hidden as an attribute and give/take it from parts
+Or I could give each 'page' an attribute so only one 'page' shows at a time */
+.hidden {               /*This would need to be given and removed from parts */
+    height: 0px;    
+}
+
+.page1 {
+    height: 0px;    /*This would need to change based on input(js) */
+}
