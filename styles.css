@@ -11,3 +11,37 @@ Or I could give each 'page' an attribute so only one 'page' shows at a time */
 .page1 {
     height: 0px;    /*This would need to change based on input(js) */
 }
+
+/*experimental classes */
+.temporary {
+    background-color: rgba(255, 255, 255, 0);
+    padding: 30px;
+    margin: 20px 0;
+    border-radius: 15px;
+    transition: transform 0.3s ease;  /* Add this line */
+}
+
+.temporary:hover {
+    height: 0px;
+    font-size: 0px;
+}
+
+/*experimental classes */
+.hidden2 {
+    background-color: rgba(255, 255, 255, 0);
+    height: 50px;
+    padding: 0px;
+    margin: 0px 0;
+    border-radius: 0px;
+    transition: transform 0.3s ease;  /* Add this line */
+    font-size: 0px; 
+}
+
+.hidden2:hover {
+    background-color: rgba(255, 255, 255, 0);
+    padding: 30px;
+    margin: 20px 0;
+    border-radius: 15px;
+    height: 50px;
+    font-size: 12px;
+}
