@@ -1,6 +1,32 @@
 
 
 
+.centre {
+    text-align: center;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Either I use .hidden as an attribute and give/take it from parts
 Or I could give each 'page' an attribute so only one 'page' shows at a time */
