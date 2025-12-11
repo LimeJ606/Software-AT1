@@ -16,7 +16,7 @@ const db = new sqlite3.Database('./datasource.db', (err) => {
 // NEW CODE: Handle a GET request to the '/data' endpoint
 app.get('/data', (req, res) => {
     // Define the SQL query to retrieve all records from the 'favourite_wiki' table
-    const sql = `SELECT * FROM favourite_wiki`; // Replace with your actual table name if different
+    const sql = `SELECT * FROM FAQ`; // Replace with your actual table name if different
 
     // Execute the SQL query using the database connection
     db.all(sql, [], (err, rows) => {
