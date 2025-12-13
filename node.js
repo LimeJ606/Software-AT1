@@ -31,13 +31,8 @@ app.get('/data', (req, res) => {
     });
 });
 
-app.use(express.static(path.join(__dirname, "public")));
-
-app.get("/*path", function (req, res) {
-    res.sendFile(path.join(__dirname, "public/index.html"));
+// Start the server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
-
-
-app.listen(PORT, () =>
-    console.log('Server running at http://localhost:${PORT}')
-);

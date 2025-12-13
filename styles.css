@@ -1,3 +1,50 @@
+:root {    /*thinking about adding multiple themes, like dark/light/colourblind like eric's*/
+  --bg: #0f1724;
+  --panel: #0b1220;
+  --muted: #9aa4b2;
+  --accent: #f34498;
+  --white: #ff4372;
+  --card: #0b1220;
+  --font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+html[data-theme="strawberry"] {
+    --bg: #fff0f5;
+    --panel: #ffe4ec;
+    --muted: #ffb6c1;
+    --accent: #ff69b4;
+    --white: #4b0082;
+    --card: #ffe4ec;
+}
+
+html[data-theme="blueberry"] {
+    --bg: #f0f8ff;
+    --panel: #e6f2ff;
+    --muted: #99ccff;
+    --accent: #3399ff;
+    --white: #00008b;
+    --card: #e6f2ff;
+}   
+
+body {
+  background-color: var(--bg);
+  color: var(--white);
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  accent-color: var(--accent);
+}
+
+#theme-toggle {
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+#theme-toggle:hover {
+  opacity: 0.8;
+}
+
+
 
 
 
