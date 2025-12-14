@@ -1,20 +1,21 @@
 :root {    /*thinking about adding multiple themes, like dark/light/colourblind like eric's*/
-  --bg: #0f1724;
+  --bg: #ffffff;
   --panel: #0b1220;
-  --muted: #9aa4b2;
-  --accent: #f34498;
-  --white: #ff4372;
-  --card: #0b1220;
+  --muted: #9aa4b2; 
+  --accent: #c5c5c5;
+  --white: #000000;
+  --card: #8d9ab6;
   --font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
 html[data-theme="strawberry"] {
-    --bg: #fff0f5;
+    --bg: #fcbed2;
     --panel: #ffe4ec;
     --muted: #ffb6c1;
     --accent: #ff69b4;
     --white: #4b0082;
     --card: #ffe4ec;
+    --background-image: url('jam.png');
 }
 
 html[data-theme="blueberry"] {
@@ -24,7 +25,17 @@ html[data-theme="blueberry"] {
     --accent: #3399ff;
     --white: #00008b;
     --card: #e6f2ff;
+    --background-image: url('bluejam.png');
 }   
+
+h4 {
+    font-size: 15px;
+    align-items: right;
+}
+
+p {
+    font-size: 12px;
+}
 
 body {
   background-color: var(--bg);
@@ -33,7 +44,18 @@ body {
   padding: 0;
   font-family: var(--font-family);
   accent-color: var(--accent);
+  src: var(--background-image);
 }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 8px;
+  text-align: left;
+}
+
 
 #theme-toggle {
   cursor: pointer;
@@ -44,17 +66,46 @@ body {
   opacity: 0.8;
 }
 
+.imageblock {
+    display: flex;
+    align-items: top;
+    align-self: top;
+}
 
+.textblock {
+    display: flex;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    /*align-self: center;*/
+    flex-direction: column;
+}
 
-
+.bigblock {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
 
 .centre {
     text-align: center;
     align-items: center;
+    align-self: center;
 }   
 
+.botnav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--panel);
+    padding: 10px 0;
+    text-align: center;
+}
 
-
+a {
+    color: var(--accent);
+    font-weight: bold;
+}
 
 
 

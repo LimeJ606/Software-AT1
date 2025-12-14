@@ -1,25 +1,94 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const button = document.getElementById('theme-toggle');
-  console.log('Button element:', button); // Check if button is found
+  // Theme toggle logic
+  const button1 = document.getElementById('theme-toggle');
+  const button2 = document.getElementById('theme-toggle1'); // 2nd image
+  console.log('Button1 element:', button1);
+  console.log('Button2 element:', button2);
 
-  if (!button) {
+  if (!button1) {
     console.error('Theme toggle button not found!');
   } else {
-    const themes = ['', 'strawberry', 'blueberry']; // '' for default
+    const themes = ['', 'strawberry', 'blueberry'];
+    const images = ['emptyjar.png', 'strawjam.png', 'bluejam.png']; // Corrected filenames
     let currentIndex = 0;
 
-    button.addEventListener('click', () => {
-      console.log('Button clicked!'); // Confirm click event
+    // Load saved theme and set both images
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme && themes.includes(savedTheme)) {
+      currentIndex = themes.indexOf(savedTheme);
+      const html = document.documentElement;
+      if (savedTheme) {
+        html.setAttribute('data-theme', savedTheme);
+      } else {
+        html.removeAttribute('data-theme');
+      }
+      button1.src = images[currentIndex];
+      if (button2) button2.src = images[currentIndex]; // Set 2nd image too
+      console.log('Loaded saved theme:', savedTheme, 'Image:', images[currentIndex]);
+    }
+
+    button1.addEventListener('click', () => {
+      console.log('Button clicked!');
       const html = document.documentElement;
       currentIndex = (currentIndex + 1) % themes.length;
       const newTheme = themes[currentIndex];
-      console.log('New theme:', newTheme); // Log the theme being set
+      const newImage = images[currentIndex];
+      console.log('New theme:', newTheme, 'New image:', newImage);
       if (newTheme) {
         html.setAttribute('data-theme', newTheme);
       } else {
         html.removeAttribute('data-theme');
       }
-      console.log('Current data-theme attribute:', html.getAttribute('data-theme')); // Confirm attribute set
+      button1.src = newImage;
+      if (button2) button2.src = newImage; // Change 2nd image too
+      localStorage.setItem('theme', newTheme);
+      console.log('Saved theme to localStorage:', newTheme);
     });
+  }
+
+  // Fetch and display data tables (conditional by page)
+  const tableContainer = document.getElementById('data-table');
+  if (tableContainer) {
+    const isSwedishPage = window.location.pathname.includes('SwedishMethod.html');
+    const endpoint = isSwedishPage ? '/data2' : '/data';
+    const dbName = isSwedishPage ? 'datasource2.db' : 'datasource.db (FAQ)';
+
+    fetch(endpoint)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (data.error) {
+          tableContainer.innerHTML = `<p>Error loading data from ${dbName}: ${data.error}</p>`;
+        } else {
+          tableContainer.innerHTML = `<h3>Data from ${dbName}</h3>` + generateTable(data);
+        }
+      })
+      .catch(err => {
+        tableContainer.innerHTML = `<p>Error fetching data from ${dbName}: ${err.message}. Ensure the server is running with 'node node.js'.</p>`;
+      });
+  }
+
+  // Helper function to generate HTML table
+  function generateTable(data) {
+    if (!data || data.length === 0) return '<p>No data available.</p>';
+    const headers = Object.keys(data[0]);
+    let table = '<table border="1"><thead><tr>';
+    headers.forEach(header => {
+      table += `<th>${header}</th>`;
+    });
+    table += '</tr></thead><tbody>';
+    data.forEach(row => {
+      table += '<tr>';
+      headers.forEach(header => {
+        table += `<td>${row[header] || ''}</td>`;
+      });
+      table += '</tr>';
+    });
+    table += '</tbody></table>';
+    return table;
   }
 });
