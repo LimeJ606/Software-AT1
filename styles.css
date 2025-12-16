@@ -30,12 +30,13 @@ html[data-theme="blueberry"] {
 }   
 
 h4 {
-    font-size: 15px;
-    align-items: right;
+    font-size: 18px;
+    
 }
 
 p {
-    font-size: 12px;
+    font-size: 16px;
+    margin: 5px;
 }
 
 body {
@@ -97,6 +98,8 @@ th, td {
     display: flex;
     align-items: center;
     flex-direction: row;
+    margin-left: 20%;
+    margin-right: 20%
 }
 
 .centre {
@@ -121,6 +124,8 @@ th, td {
 a {
     color: var(--accent);
     font-weight: bold;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 

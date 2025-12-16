@@ -7,31 +7,11 @@ app.use(express.static(__dirname));
 
 const sqlite3 = require('sqlite3').verbose(); // Use .verbose() for more detailed error messages
 
-const db = new sqlite3.Database('./DATA/datasource.db', (err) => {
-    if (err) {
-        console.error(err.message);
-    }
-    console.log('Connected to the SQLite database datasource.db.');
-});
-
 const db2 = new sqlite3.Database('./DATA/datasource2.db', (err) => {
     if (err) {
         console.error(err.message);
     }
     console.log('Connected to the SQLite database datasource2.db.');
-});
-
-app.get('/data', (req, res) => {
-    const sql = `SELECT * FROM FAQ`; // Table name is FAQ in datasource.db
-
-    db.all(sql, [], (err, rows) => {
-        if (err) {
-            res.status(500).json({ error: err.message });
-            return;
-        }
-
-        res.json(rows);
-    });
 });
 
 app.get('/data2', (req, res) => {
