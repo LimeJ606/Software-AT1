@@ -11,7 +11,7 @@
 
 html[data-theme="strawberry"] {
     --bg: #fcbed2;
-    --panel: #ffe4ec;
+    --panel: #e22e64;
     --muted: #ffb6c1;
     --accent: #ff69b4;
     --white: #4b0082;
@@ -21,7 +21,7 @@ html[data-theme="strawberry"] {
 
 html[data-theme="blueberry"] {
     --bg: #f0f8ff;
-    --panel: #e6f2ff;
+    --panel: #2d86e4;
     --muted: #99ccff;
     --accent: #3399ff;
     --white: #00008b;
