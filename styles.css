@@ -6,6 +6,7 @@
   --white: #000000;
   --card: #8d9ab6;
   --font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --background-image: url('image/emptyjar.png');
 }
 
 html[data-theme="strawberry"] {
@@ -15,7 +16,7 @@ html[data-theme="strawberry"] {
     --accent: #ff69b4;
     --white: #4b0082;
     --card: #ffe4ec;
-    --background-image: url('jam.png');
+    --background-image: url('image/strawjam.png');
 }
 
 html[data-theme="blueberry"] {
@@ -25,7 +26,7 @@ html[data-theme="blueberry"] {
     --accent: #3399ff;
     --white: #00008b;
     --card: #e6f2ff;
-    --background-image: url('bluejam.png');
+    --background-image: url('image/bluejam.png');
 }   
 
 h4 {
@@ -48,8 +49,10 @@ body {
 }
 
 table {
-  width: 100%;
+  width: 60%;
   border-collapse: collapse;
+  align-self: center;
+  margin: 20px auto;
 }
 th, td {
   padding: 8px;
@@ -63,6 +66,15 @@ th, td {
 }
 
 #theme-toggle:hover {
+  opacity: 0.8;
+}
+
+#theme-toggle1 {
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+#theme-toggle1:hover {
   opacity: 0.8;
 }
 
@@ -100,6 +112,10 @@ th, td {
     background-color: var(--panel);
     padding: 10px 0;
     text-align: center;
+}
+
+.botgap {
+    height: 60px;
 }
 
 a {

@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error('Theme toggle button not found!');
   } else {
     const themes = ['', 'strawberry', 'blueberry'];
-    const images = ['emptyjar.png', 'strawjam.png', 'bluejam.png']; // Corrected filenames
+    const images = ['image/emptyjar.png', 'image/strawjam.png', 'image/bluejam.png']; // Image filenames
     let currentIndex = 0;
 
     // Load saved theme and set both images
@@ -27,7 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('Loaded saved theme:', savedTheme, 'Image:', images[currentIndex]);
     }
 
-    button1.addEventListener('click', () => {
+    // Shared click handler for both buttons
+    function handleClick() {
       console.log('Button clicked!');
       const html = document.documentElement;
       currentIndex = (currentIndex + 1) % themes.length;
@@ -43,7 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (button2) button2.src = newImage; // Change 2nd image too
       localStorage.setItem('theme', newTheme);
       console.log('Saved theme to localStorage:', newTheme);
-    });
+    }
+
+    button1.addEventListener('click', handleClick);
+    if (button2) button2.addEventListener('click', handleClick); // Add to 2nd image too
   }
 
   // Fetch and display data tables (conditional by page)
@@ -64,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (data.error) {
           tableContainer.innerHTML = `<p>Error loading data from ${dbName}: ${data.error}</p>`;
         } else {
-          tableContainer.innerHTML = `<h3>Data from ${dbName}</h3>` + generateTable(data);
+          tableContainer.innerHTML = `<h3 class="centre">Typical JAM Session</h3>` + generateTable(data);
         }
       })
       .catch(err => {
@@ -79,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let table = '<table border="1"><thead><tr>';
     headers.forEach(header => {
       table += `<th>${header}</th>`;
-    });
+    }); 
     table += '</tr></thead><tbody>';
     data.forEach(row => {
       table += '<tr>';

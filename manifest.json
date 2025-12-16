@@ -2,7 +2,7 @@
   "name": "JAM information site",
   "short_name": "JAM info",
   "start_url": "index.html",
-  "scope": "/",             /*idk what is here and below*/
+  "scope": "/",        
   "display": "standalone",
   "background_color": "#081026",
   "theme_color": "#0f1724",
